@@ -1,5 +1,6 @@
 const http = require("http");
-const getUsers = require('./modules/users')
+const getUsers = require("./modules/users");
+const hello = require("./modules/hello-module");
 const port = 3003;
 
 const server = http.createServer((request, responce) => {
@@ -7,18 +8,21 @@ const server = http.createServer((request, responce) => {
     responce.status = 200;
     responce.statusMessage = "OK";
     responce.header = "Content-Type: application/json";
-    responce.write(getUsers());
+    responce.write(getUsers())
     responce.end();
     return;
   }
-
-  responce.status = 200;
-  responce.statusMessage = "OK";
-  responce.header = "Content-Type: text/plain";
-  responce.write("Hello, world");
-  responce.end();
+  if (responce.status = 200) {
+    responce.statusMessage = "OK";
+    responce.header = "Content-Type: text/plain";
+    responce.write(`Hello, .}`);
+    responce.end();
+  }
 });
 
+hello('this'
+);
+
 server.listen(port, () => {
-  console.log("Сервер запущен по адресу http://127.0.0.1:"+ port);
+  console.log("Сервер запущен по адресу http://127.0.0.1:" + port);
 });
